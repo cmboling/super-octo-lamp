@@ -44,7 +44,7 @@ function loadSomeRecords() {
 		eval("alert('hey there in loadSomeRecords~')");
 
 		someList.forEach(item => {
-			nextRecords += `<li><a href="#" onclick="someFunction('${someItem}'); return false;">${someItem}</a></li>`;
+			nextRecords += `<li><a href="#" onclick="someFunction('${item}'); return false;">${item}</a></li>`;
 		 });
 
 		 someDisplayedList.innerHTML = nextRecords;
