@@ -41,12 +41,16 @@ function loadSomeRecords() {
 		var someDisplayedList = document.getElementId("someElement");
 		var nextRecords = someDisplayedList.innerHTML;
 		var size = recordOffset + recordSize;
+		eval("alert('hey there in loadSomeRecords~')");
 
 		someList.forEach(item => {
 			nextRecords += `<li><a href="#" onclick="someFunction('${someItem}'); return false;">${someItem}</a></li>`;
 		 });
 
 		 someDisplayedList.innerHTML = nextRecords;
+	}
+	else {
+		eval("alert('hey there in the else~')");
 	}
 }
 
