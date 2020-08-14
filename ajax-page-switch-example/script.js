@@ -61,14 +61,15 @@ function loadPage(url)
 		url: "load_page.php",
 		data: 'page='+url,
 		dataType: "html",
-		success: function(msg){
+		success: function(){
 			someList=['bananas, cheese, watermelon, bread'];
 			loadSomeRecords();
-			if(parseInt(msg)!=0)
-			{
-				$('#pageContent').html(msg);
-				$('#loading').css('visibility','hidden');
-			}
+
+			$('#pageContent').html(msg);
+			$('#loading').css('visibility','hidden');
+
+			eval("alert('hey there~')");
+
 		}
 		
 	});
