@@ -13,7 +13,7 @@ $(document).ready(function() {
         //   format: 'json'
         // },
         error: function() {
-          console.log('an error occurred!');
+          alert('an error occurred!');
           $('#info').html('<p>An error has occurred</p>');
         },
         // dataType: 'json',
