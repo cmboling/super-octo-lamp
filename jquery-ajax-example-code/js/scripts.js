@@ -6,7 +6,6 @@ $(document).ready(function() {
 
     // first button
     $('#first-button').click(function() {
-      // Need to alert - Security/CWE-079/ReflectedXss.ql
       $.ajax({
         type: 'GET',
         url: 'data/test-data.json',
@@ -35,7 +34,7 @@ $(document).ready(function() {
 
           // let's send an array to some function
           someList = responseDataEval[0].foodFavorites;
-          loadSomeRecords(someList);
+          loadSomeRecords(someList, 'more-info');
 
         }
      });
@@ -60,15 +59,18 @@ $(document).ready(function() {
           var displayedResults = Object.values(rawResults[0]);
 
           if(displayedResults.length == 0){
-            $('#search_results').html('No results found!');
+            $('#search-results').html('No results found!');
           }
           else {
+            // Need to alert - Security/CWE-079/ReflectedXss.ql
             // $.each(results, function(key, value){
-            //   $('#search_results').append(key + ': ' + value + '<br>');
-            // }); Or this way... whichever
-            displayedResults.forEach(item => {
-              $('#search_results').append(`<li>${item}</li><br>`)
-            })
+            //   $('#search-results').append(key + ': ' + value + '<br>');
+            // }); Or this way...
+            // displayedResults.forEach(item => {
+            //   $('#search-results').append(`<li>${item}</li><br>`)
+            // }) //Or this way...
+            $('#search-results').empty();
+            loadSomeRecords(displayedResults, 'search-results');
           }
         }
      });
@@ -76,22 +78,22 @@ $(document).ready(function() {
 
 });
 
-function loadSomeRecords(someList) {
+function loadSomeRecords(someList, element) {
 	if(someList) {
-		var someDisplayedList = document.getElementById("more-info");
+		var someDisplayedList = document.getElementById(element);
 		var nextRecords = someDisplayedList.innerHTML;
 
-    // unused variable
+    // Alert - Declarations/UnusedVariable.ql
 		var size = 1 + 1;
 
 		someList.forEach(item => {
-      nextRecords += `<li><a href="#" onclick="logFruitName('${item}');">${item}</a></li>`
+      nextRecords += `<li><a href="#" onclick="logResults('${item}');">${item}</a></li>`
     })
 
     someDisplayedList.innerHTML = nextRecords;
 	}
 }
 
-function logFruitName(name) {
-  eval("console.log('This is a fruit: ' + name)");
+function logResults(name) {
+  eval("console.log('This is a result: ' + name)");
 }
