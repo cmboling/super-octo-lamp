@@ -81,7 +81,7 @@ $(document).ready(function() {
 function loadSomeRecords(someList, element) {
 	if(someList) {
 		var someDisplayedList = document.getElementById(element);
-		var nextRecords = someDisplayedList.innerHTML;
+		var nextRecords = '';
 
     // Alert - Declarations/UnusedVariable.ql
 		var size = 1 + 1;
@@ -90,7 +90,7 @@ function loadSomeRecords(someList, element) {
       nextRecords += `<li><a href="#" onclick="logResults('${item}');">${item}</a></li>`
     })
 
-    someDisplayedList.innerHTML = nextRecords;
+    someDisplayedList.innerHTML += nextRecords;
 	}
 }
 
